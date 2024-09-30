@@ -5,6 +5,8 @@ import {
     ListBulletIcon,
     ChartBarIcon,
 } from '@heroicons/vue/24/outline'
+
+const navItems = ['timeline', 'activities', 'progress']
 </script>
 
 <template>
@@ -26,35 +28,23 @@ import {
             </div>
         </a>
     </header>
-    <main class="flex-grow"></main>
+
+    <main class="flex-grow">MAIN</main>
 
     <nav class="sticky bottom-0 z-10 bg-white">
         <ul class="flex justify-around items-center border-t">
-            <li class="flex-1">
+            <li v-for="page in navItems" :key="page" class="flex-1">
                 <a
+                    :href="`#${page}`"
                     class="flex flex-col items-center p-2 text-xs capitalize"
-                    href="#timeline"
                 >
-                    <ClockIcon class="w-6 h-6" />timeline
+                    <ClockIcon v-if="page === 'timeline'" class="w-6 h-6" />
+                    <ListBulletIcon
+                        v-else-if="page === 'activities'"
+                        class="w-6 h-6"
+                    />
+                    <ChartBarIcon v-else class="w-6 h-6" />{{ page }}
                 </a>
-            </li>
-            <li class="flex-1">
-                <a
-                    class="flex flex-col items-center p-2 text-xs capitalize"
-                    href="#activities"
-                >
-                    <ListBulletIcon class="w-6 h-6" />
-                    activities</a
-                >
-            </li>
-            <li class="flex-1">
-                <a
-                    class="flex flex-col items-center p-2 text-xs capitalize"
-                    href="#progress"
-                >
-                    <ChartBarIcon class="w-6 h-6" />
-                    progress</a
-                >
             </li>
         </ul>
     </nav>
