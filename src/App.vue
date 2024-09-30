@@ -6,7 +6,7 @@ import TheNav from '@/components/TheNav.vue'
 <template>
     <TheHeader />
 
-    <main class="flex-grow">MAIN</main>
+    <main class="flex-grow">MAIN2</main>
 
     <TheNav />
 </template>
